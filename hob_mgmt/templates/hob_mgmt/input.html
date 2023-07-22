@@ -1,0 +1,18 @@
+{% extends 'hob_mgmt/base.html' %}
+
+{% block content %}
+
+<div class="card text-center">
+    <div class="card-header bg-primary text-white mb-3 fs-1">検索フォーム</div>
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <input class="w-50 form-control-lg mb-3" type="text" name="serial_no" placeholder="製番を入力">
+            <div class="d-grid gap-2">
+                <input class="btn btn-danger btn-lg" type="submit" value="検索">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock  %}

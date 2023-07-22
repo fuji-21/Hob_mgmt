@@ -1,0 +1,27 @@
+仮想環境構築
+python3 -m venv myvenv
+
+仮想環境起動
+source myvenv/bin/activate
+
+仮想環境から抜ける
+deactivate
+
+プロジェクトフォルダの作成
+django-admin startproject プロジェクト名 .
+
+アプリケーションの追加
+python3 manage.py startapp アプリ名
+
+Webサーバー起動
+python3 manage.py runserver
+
+
+管理ユーザーを作成
+python3 manage.py createsuperuser
+
+models.pyの差分をmigrationフォルダに残す
+python3 manage.py makemigrations
+
+migrationフォルダにあるものをデータベースに反映
+python3 manage.py migrate

@@ -1,0 +1,39 @@
+{% extends 'hob_mgmt/base.html' %}
+<!-- formにクラスをつけることで装飾できるようにする -->
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body text-center">
+    <h3 class="card-title mb-3">編集画面</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="justify-content-center ">
+                <div class="mb-3 input-group-lg">
+                    {% render_field form.tool class='form-control' placeholder="ツールNoを入力" %}
+                </div>
+                <div class="mb-3 input-group-lg">
+                    {% render_field form.serial_no class='form-control' placeholder="製番を入力" %}
+                </div>
+                <div class="mb-3 input-group-lg">
+                    {% render_field form.pg_no class='form-control' placeholder="プログラムNoを入力" %}
+                </div>
+                <div class="mb-3 input-group-lg">
+                    {% render_field form.blade_thickness class='form-control' placeholder="刃厚を入力" %}
+                </div>
+                <div class="mb-3 input-group-lg">
+                    {% render_field form.axial_rake_angle class='form-control' placeholder="すくい角・向芯度を入力" %}
+                </div>
+            </div>
+                <div class="">
+                    <button class="btn btn-success btn-lg" type="submit" name="form">編集</button>
+                </div>
+        </form>
+    </div>
+    <div class="text-center">
+        <a href="{% url 'list' %}" class="btn btn-warning btn-lg">戻る</a>
+    </div>
+</div>
+
+{% endblock  %}

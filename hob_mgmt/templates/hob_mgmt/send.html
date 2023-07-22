@@ -1,0 +1,30 @@
+{% extends 'hob_mgmt/base.html' %}
+
+{% block content %}
+
+<div class="card text-center">
+    <div class="card-header bg-primary text-white mb-3 fs-1">プログラムQR</div>
+    <div class="card-body d-flex justify-content-center">
+        <div class="card mb-3">
+            {% for result in results %}
+            <div class="row">
+                <div class="col">
+                    <div class="card-body">
+                        <h6 class="card-title">ツールNo</h6>
+                        <p class="card-text fs-1 text-danger fw-bold">{{ result.tool }}</p>
+                        <h6 class="card-title">製番</h6>
+                        <p class="card-text fs-2 text-info">{{ result.serial_no }}</p>
+                        <h6 class="card-title">プログラムNo</h6>
+                        <p class="card-text fs-1 text-danger fw-bold">{{ result.pg_no }}</p>
+                    </div>
+                </div>
+                <div class="col d-flex align-items-center">
+                    <img src="/static/QRcode/{{ result.pg_no }}.png" class="img-fluid rounded-start" alt="QRコード画像">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock  %}

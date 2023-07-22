@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>ホブ管理アプリ</title>
+</head>
+
+<nav class="bg-light">
+    <div class="container align-middle w-aute mb-2 text-center">
+        <span class="navbar-brand fw-bold fs-1">ホブ管理アプリ</span>
+    </div>
+    <ul class="nav nav-pills nav-justified mx-3 ">
+        {% url 'input' as input_url %}
+        {% url 'list' as list_url %}
+        {% url 'add' as add_url %}
+        <li class="nav-item border border-primary rounded-3">
+            <a class="nav-link {% if request.path == input_url %}active{% endif %}" href="{% url 'input' %}">検索</a>
+        </li>
+        <li class="nav-item border border-primary rounded-3 mx-3">
+            <a class="nav-link {% if request.path == list_url %}active{% endif %}" href="{% url 'list' %}">登録ツール一覧</a>
+        </li>
+        <li class="nav-item border border-primary rounded-3">
+            <a class="nav-link {% if request.path == add_url %}active{% endif %}" href="{% url 'add' %}">ツール登録</a>
+        </li>
+    </ul>
+</nav>
+
+<body>
+    <div class="container">
+        <div class="mt-2">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

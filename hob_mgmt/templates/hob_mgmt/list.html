@@ -1,0 +1,50 @@
+{% extends 'hob_mgmt/base.html' %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+        <div class="card-title">
+            <h2 class="text-center">登録ツール一覧</h2>
+        </div>
+        <div class="">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="tool">ツールNo</th>
+                        <th scope="col" class="serial_no">製造番号</th>
+                        <th scope="col" class="pg_no">プログラムNo</th>
+                        <th scope="col" class="blade_thickn">刃厚</th>
+                        <th scope="col" class="axial_rake_angle">向芯度・すくい角</th>
+                        <th scope="col" class="edit">編集</th>
+                        <th scope="col" class="delete">削除</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for hob_mgmt in hob_mgmt_data  %}
+                        <tr>
+                            <td>{{ hob_mgmt.tool }}</td>
+                            <td>{{ hob_mgmt.serial_no }}</td>
+                            <td>{{ hob_mgmt.pg_no }}</td>
+                            <td>{{ hob_mgmt.blade_thickness }}</td>
+                            <td>{{ hob_mgmt.axial_rake_angle }}</td>
+                            <td>
+                                <a href="{% url 'edit' hob_mgmt.id %}">
+                                    <i class="fas fa-edit text-success"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'delete' hob_mgmt.id %}">
+                                    <i class="fas fa-far fa-trash-alt text-danger"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock  %}
